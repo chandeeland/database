@@ -97,6 +97,18 @@ abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builde
 	}
 
 	/**
+	 * Opens a new "NOT WHERE (...)" grouping.
+	 *
+	 * @return  $this
+	 */
+	public function not_where_open()
+	{
+		$this->_where[] = array('NOT' => '(');
+
+		return $this;
+	}
+
+	/**
 	 * Closes an open "AND WHERE (...)" grouping.
 	 *
 	 * @return  $this
@@ -126,6 +138,18 @@ abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builde
 	public function or_where_close()
 	{
 		$this->_where[] = array('OR' => ')');
+
+		return $this;
+	}
+
+	/**
+	 * Closes an open "NOT WHERE (...)" grouping.
+	 *
+	 * @return  $this
+	 */
+	public function not_where_close()
+	{
+		$this->_where[] = array('NOT' => ')');
 
 		return $this;
 	}

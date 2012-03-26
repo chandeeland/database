@@ -50,7 +50,7 @@ abstract class Kohana_Database_Query_Builder extends Database_Query {
 			{
 				if ($condition === '(')
 				{
-					if ( ! empty($sql) AND $last_condition !== '(')
+					if ( $logic == 'NOT' || ( ! empty($sql) AND $last_condition !== '('))
 					{
 						// Include logic operator
 						$sql .= ' '.$logic.' ';
